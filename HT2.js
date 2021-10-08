@@ -56,4 +56,9 @@ let mass = [12, 898,5, 899, 900];
         }
 
 
+let mass = [1, 0, 1, 0, 1];
+array = mass.join('')
+let mass2 = parseInt(array, 2)
+console.log(mass2)
+
         
