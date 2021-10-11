@@ -60,8 +60,4 @@ let mass = [1, 0, 1, 0, 1];
 array = mass.join('')
 let mass2 = parseInt(array, 2)
 console.log(mass2)
-
-let mass = [1, 0, 1, 0, 1, 0];
-array = mass.join('')
-console.log((array).toString(2))
         
