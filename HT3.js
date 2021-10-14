@@ -59,14 +59,14 @@ function getTime() {
 
 
 function startTimer() {
-    var min = 0;
-    var sec = 10;
+    var min = 1;
+    var sec = 60;
     var countdownTimer = setInterval(function() {
         console.log('0' +min + ':' + sec);
         sec--;
         if (sec < 0) {
             min --;
-            sec =10;
+            sec =59;
         };
         if (sec.toString().length == 1){
             sec = '0' + sec;
