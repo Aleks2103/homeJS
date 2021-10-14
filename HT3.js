@@ -58,40 +58,23 @@ function getTime() {
 // 4 task --------------------------
 
 
-
-
-
-// function startSecondTimer() {
-//     var i = 60;
-//     var countdownTimer = setInterval(function() {
-//         console.log(i);
-//         i = i - 1;
-//         if (i <= 0) {
-//             clearTimeout(countdownTimer);
-//         }
-//     }, 1000);
-// }
-
-// function startMinutTimer() {
-//     var j = 5;
-//     var countdownTimer = setInterval(function() {
-//         console.log(j);
-//         j = j - 1;
-//         if (j <= 0) {
-//             clearTimeout(countdownTimer);
-//         }
-//     }, 60000);
-// }
-
-function startTimer(from, to) {
-    let current = from;
-    
-    let timerId = setInterval(function() {
-      console.log(':' + current);
-      if (current == to) {
-        clearInterval(timerId);
-      }
-      current--;
+function startTimer() {
+    var min = 0;
+    var sec = 10;
+    var countdownTimer = setInterval(function() {
+        console.log('0' +min + ':' + sec);
+        sec--;
+        if (sec < 0) {
+            min --;
+            sec =10;
+        };
+        if (sec.toString().length == 1){
+            sec = '0' + sec;
+        }
+        if (min == 0 && sec == 0){
+          clearTimeout(countdownTimer);
+          console.log('0' +min + ':' + sec + '\n' + 'Time End')
+        }
     }, 1000);
-  }
-startTimer(60, 0);
+}
+startTimer()
