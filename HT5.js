@@ -87,7 +87,7 @@ class Student{
         this.schoolPoin = schoolPoin;
     }
     setId(){
-        return console.log(Math.floor(Math.random()*1000))
+        return Object.assign(array.map(o => ({...o, id : Math.floor(Math.random()*1000)})))
     }
     isSelfPayment(array){
         let a = students.map(students => students.ratingPoint);
