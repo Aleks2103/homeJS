@@ -95,16 +95,19 @@ class Student{
         let cool = (b.sort((a, b) => b-a).splice(0, 5));
         for(let i of a){
             if(i >= 800){
-                return true
+                return Object.assign(students.map(o => ({...o, isSelfPayment: true})))
             } else {
                 return false
             }
         }
+        i+=
+        students.map(obj =>({...obj, isSelfPayment : isSelfPayment()}))
+
 
     }
 }
 let studentObj = new Student()
-console.log(studentObj.)
+console.log(studentObj.isSelfPayment())
 
 // task 2
 
