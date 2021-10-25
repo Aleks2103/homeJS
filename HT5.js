@@ -100,7 +100,6 @@ class Student{
                 return false
             }
         }
-        i+=
         students.map(obj =>({...obj, isSelfPayment : isSelfPayment()}))
 
 
