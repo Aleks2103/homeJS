@@ -100,9 +100,6 @@ class Student{
                 return false
             }
         }
-        students.map(obj =>({...obj, isSelfPayment : isSelfPayment()}))
-
-
     }
 }
 let studentObj = new Student()
