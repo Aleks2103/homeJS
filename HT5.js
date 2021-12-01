@@ -1,4 +1,4 @@
-const students = [{
+const studentArr = [{
     name: 'Сергей',
     surname: 'Войлов',
     ratingPoint: 1000,
@@ -79,31 +79,49 @@ const students = [{
 
 // task 1
 
-class Student{
-    constructor(enrollee, name, ratingPoint, schoolPoin){
-        this.enrollee = enrollee;
-        this.name = name;
-        this.ratingPoint = ratingPoint;
-        this.schoolPoin = schoolPoin;
+class Student {
+  static allInstances = [];
+  static budget = [];
+  static id = 1;
+  constructor(enrollee) {
+    this.id = Student.id;
+    this.isSelfPayment = true;
+    for (const key in enrollee) {
+      this[key] = enrollee[key];
     }
-    setId(){
-        return Object.assign(array.map(o => ({...o, id : Math.floor(Math.random()*1000)})))
+    if (this.ratingPoint >= 800 && Student.budget.length < 5) {
+      this.isSelfPayment = false;
+      Student.budget.push(this);
+    } else {
+      let min = Math.min(...Student.budget.map((item) => item.ratingPoint));
+      var student = Student.budget.find((obj) => {
+        return obj.ratingPoint === min;
+      });
+
+      if (
+        this.ratingPoint > min ||
+        (this.ratingPoint == min && this.schoolPoint > student.schoolPoint)
+      ) {
+        this.isSelfPayment = false;
+        student.isSelfPayment = true;
+        Student.budget.splice(Student.budget.indexOf(student), 1);
+        Student.budget.push(this);
+      }
     }
-    isSelfPayment(array){
-        let a = students.map(students => students.ratingPoint);
-        let b = a.filter(neu => neu >= 800);
-        let cool = (b.sort((a, b) => b-a).splice(0, 5));
-        for(let i of a){
-            if(i >= 800){
-                return Object.assign(students.map(o => ({...o, isSelfPayment: true})))
-            } else {
-                return false
-            }
-        }
-    }
+
+    Student.allInstances.push(this);
+    Student.id++;
+  }
+  static listOfStudents() {
+    return Student.allInstances;
+  }
 }
-let studentObj = new Student()
-console.log(studentObj.isSelfPayment())
+
+for (const item of studentArr) {
+  let student = new Student(item);
+}
+
+console.log(Student.listOfStudents());
 
 // task 2
 
